@@ -67,6 +67,7 @@ public class MyController {
 
         String photoName = null;
         if (photo != null && !photo.getOriginalFilename().isEmpty()) {
+            makeDir();
             try {
                 photo.transferTo(new File
                         (System.getProperty("user.dir") +
@@ -102,6 +103,7 @@ public class MyController {
         }
         String photoName = "";
         if (photo != null && !photo.getOriginalFilename().isEmpty()) {
+            makeDir();
             try {
                 photo.transferTo(new File
                         (System.getProperty("user.dir") +
@@ -174,4 +176,11 @@ public class MyController {
         return false;
     }
 
+    private void makeDir(){
+        File file = new File(System.getProperty("user.dir") +
+                "/src/main/resources/photos/");
+        if(!file.exists()) {
+            file.mkdir();
+        }
+    }
 }
